@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <link type="text/css" rel="stylesheet" href="css/jQueryUI/jquery-ui.css"/>
+      <link type="text/css" rel="stylesheet" href="css/styles.css"/>
+
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="css/materialize/materialize.min.css"  media="screen,projection"/>
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+
+    <body>
+      <div class="app-wrapper">
+        <div class="input-container">
+          <form class="add-items">
+            <input type="text" id="todo-list-item" placeholder="List item">
+            <button class="add" type="submit">
+              <span class="font-icon fa fa-edit">Add</span>
+            </button>
+          </form><!-- /.add-items -->
+        </div>
+        <div class="filter-container">
+          <input type="text" class="search-filter"/>
+        </div>  
+        <div class="list-container">
+          <ul id="list-items" class="large"></ul>
+          <div class="delete-zone" data-role="footer" data-position="fixed">
+            <span class="font-icon fa fa-trash-o"></span>
+          </div>
+        </div><!-- /.list-content -->
+      </div><!-- /.app-wrapper -->  
+      <!--Import jQuery before materialize.js-->
+      <!-- <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script> -->
+      <script type="text/javascript" src="scripts/materialize/materialize.min.js"></script>
+      <script type="text/javascript" src="scripts/jQuery/jquery-3.1.1.min.js"></script>
+      <script type="text/javascript" src="scripts/jQueryUI/jquery-ui.min.js"></script>
+      <script type="text/javascript" src="scripts/jquery-touch.js"></script>
+      <script type="text/javascript" src="scripts/main.js"></script>
+    </body>
+  </html>

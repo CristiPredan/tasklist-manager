@@ -1,0 +1,12 @@
+{
+	"version": 3,
+	"file": "../scss/styles.css",
+	"sources": [
+		"../scss/styles.scss"
+	],
+	"sourcesContent": [
+		"/* You can add global styles to this file, and also import other style files */\r\n\r\n* {\r\n  font-family: sans-serif;\r\n}\r\n\r\n.input-container {\r\n  padding: 0 15px;\r\n  margin: 0 0 15px 0;\r\n}\r\n\r\n.list-container {\r\n  padding: 0 15px;\r\n}\r\n\r\n.filter-container {\r\n  padding: 0 15px;\r\n}\r\n\r\n#list-items {  \r\n  li.not-done {\r\n    padding: 10px;\r\n    border: 1px solid #ccc;\r\n    margin: 0 0 10px 0;\r\n\r\n  }\r\n}\r\n\r\n.sublist-items {  \r\n  li.not-done {\r\n    padding: 10px;\r\n    border: 1px solid #ccc;\r\n    margin: 0 0 10px 0;\r\n    background-color: #fff;\r\n  }\r\n}\r\n\r\n.delete-zone {\r\n  width: 100%;\r\n  height: 100px;\r\n  border: 1px dashed #999;\r\n}\r\n\r\n.add-sublist {\r\n  float: right !important;\r\n\r\n    &:hover {\r\n      color: #ccc; \r\n      cursor: pointer;\r\n    }  \r\n}\r\n\r\n.extended-item {\r\n  width: 100%;\r\n  height: auto;\r\n  background-color: #f8f8f8;\r\n  border: 1px dashed #333;\r\n  display: none;\r\n  padding: 10px 15px;\r\n\r\n  .add-subitems {\r\n    position: relative;\r\n\r\n    button {\r\n      position: absolute;\r\n      top: 10px;\r\n      right: 15px;\r\n    }\r\n  }\r\n}"
+	],
+	"mappings": "AAAA,+EAA+E;;AAE/E,AAAA,CAAC,CAAC;EACA,WAAW,EAAE,UAAW;CACzB;;;AAED,AAAA,gBAAgB,CAAC;EACf,OAAO,EAAE,MAAO;EAChB,MAAM,EAAE,UAAW;CACpB;;;AAED,AAAA,eAAe,CAAC;EACd,OAAO,EAAE,MAAO;CACjB;;;AAED,AAAA,iBAAiB,CAAC;EAChB,OAAO,EAAE,MAAO;CACjB;;;AAED,AACI,WADO,CACT,EAAE,AAAA,SAAS,CAAC;EACV,OAAO,EAAE,IAAK;EACd,MAAM,EAAE,cAAe;EACvB,MAAM,EAAE,UAAW;CAEpB;;;AAGH,AACI,cADU,CACZ,EAAE,AAAA,SAAS,CAAC;EACV,OAAO,EAAE,IAAK;EACd,MAAM,EAAE,cAAe;EACvB,MAAM,EAAE,UAAW;EACnB,gBAAgB,EAAE,IAAK;CACxB;;;AAGH,AAAA,YAAY,CAAC;EACX,KAAK,EAAE,IAAK;EACZ,MAAM,EAAE,KAAM;EACd,MAAM,EAAE,eAAgB;CACzB;;;AAED,AAAA,YAAY,CAAC;EACX,KAAK,EAAE,gBAAiB;CAMzB;;;AAPD,AAAA,YAAY,AAGP,MAAM,CAAC;EACN,KAAK,EAAE,IAAK;EACZ,MAAM,EAAE,OAAQ;CACjB;;;AAGL,AAAA,cAAc,CAAC;EACb,KAAK,EAAE,IAAK;EACZ,MAAM,EAAE,IAAK;EACb,gBAAgB,EAAE,OAAQ;EAC1B,MAAM,EAAE,eAAgB;EACxB,OAAO,EAAE,IAAK;EACd,OAAO,EAAE,SAAU;CAWpB;;;AAjBD,AAQE,cARY,CAQZ,aAAa,CAAC;EACZ,QAAQ,EAAE,QAAS;CAOpB;;;AAhBH,AAWI,cAXU,CAQZ,aAAa,CAGX,MAAM,CAAC;EACL,QAAQ,EAAE,QAAS;EACnB,GAAG,EAAE,IAAK;EACV,KAAK,EAAE,IAAK;CACb",
+	"names": []
+}
