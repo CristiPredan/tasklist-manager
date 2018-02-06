@@ -18,20 +18,113 @@
 }
 
 #list-items {  
+
   li.not-done {
-    padding: 10px;
+    position: relative;
+    padding: 10px 10px 10px 25px;
     border: 1px solid #ccc;
     margin: 0 0 10px 0;
 
+    .check-item {
+      display: inline-block;
+      vertical-align: middle;
+      position: absolute;
+      top: 10px;
+      left: 5px;
+
+      &:before {
+        content: "\f14a";
+        color: #ccc;
+        font-size: 18px;
+        line-height: 18px;
+        font-family: 'FontAwesome';
+      }
+    }
+  }
+
+  li.completed {
+    position: relative;
+    padding: 10px 10px 10px 25px;
+    border: 1px solid #ccc;
+    margin: 0 0 10px 0;
+
+    .check-item {
+      display: inline-block;
+      vertical-align: middle;
+      position: absolute;
+      top: 10px;
+      left: 5px;
+
+      &:before {
+        content: "\f14a";
+        color: green;
+        font-size: 18px;
+        line-height: 18px;
+        font-family: 'FontAwesome';
+      }
+    }
+    .item-content {
+      opacity: 0.7;
+      text-decoration: line-through;
+    }
+
+    .extended-item {
+      opacity: 0.5 !important;
+    }
   }
 }
 
-.sublist-items {  
+.sublist-items {   
+
   li.not-done {
-    padding: 10px;
+    position: relative;
+    padding: 10px 10px 10px 25px;
+    border: 1px solid #ccc;
+    margin: 0 0 10px 0;
+
+   .check-subitem {
+      display: inline-block;
+      vertical-align: middle;
+      position: absolute;
+      top: 10px;
+      left: 5px;
+
+      &:before {
+        content: "\f14a";
+        color: #ccc;
+        font-size: 18px;
+        line-height: 18px;
+        font-family: 'FontAwesome';
+      }
+    }
+  }
+
+  li.completed {
+    position: relative;
+    padding: 10px 10px 10px 25px;
     border: 1px solid #ccc;
     margin: 0 0 10px 0;
     background-color: #fff;
+
+    .check-subitem {
+      display: inline-block;
+      vertical-align: middle;
+      position: absolute;
+      top: 10px;
+      left: 5px;
+
+      &:before {
+        content: "\f14a";
+        color: green;
+        font-size: 18px;
+        line-height: 18px;
+        font-family: 'FontAwesome';
+      }
+    }
+    .subitem-content {
+      opacity: 0.7;
+      text-decoration: line-through;
+    }
   }
 }
 

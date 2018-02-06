@@ -10,7 +10,7 @@ $(document).ready(function () {
 	var item = $('#todo-list-item').val();
 
 	if(item) {
-	  $('#list-items').append("<li class='not-done'><span class='item-content'>" + item + "</span><span class='add-sublist material-icons'>playlist_add</span><div class='extended-item'><div class='add-subitems'><input type='text' class='todo-sublist-item' placeholder='Sublist item'><button class='add'>Add</button></div><div class='list-container'><ul class='sublist-items large'></ul></div></div></li>");
+	  $('#list-items').append("<li class='not-done'><span class='check-item'></span><span class='item-content'>" + item + "</span><span class='add-sublist material-icons'>playlist_add</span><div class='extended-item'><div class='add-subitems'><input type='text' class='todo-sublist-item' placeholder='Sublist item'><button class='add'>Add</button></div><div class='list-container'><ul class='sublist-items large'></ul></div></div></li>");
 	  localStorage.setItem('listItems', $('#list-items').html());
 	  $('#todo-list-item').val("");
 	}
@@ -29,7 +29,7 @@ $(document).on('click', '.add-subitems', function(event) {
 
 
   if(subitem) {
-    $(this).parent().find("ul").append("<li class='not-done'><span class='subitem-content'>" + subitem + "</span></li>");
+    $(this).parent().find("ul").append("<li class='not-done'><span class='check-subitem'></span><span class='subitem-content'>" + subitem + "</span></li>");
     localStorage.setItem('sublistItems', $('.sublist-items').html());
     $('.todo-sublist-item').parent().parent().find('.todo-sublist-item').val("");
   }  
@@ -119,20 +119,34 @@ $(document).ready(function() {
 
 
 // Check and uncheck the tasks
-$(function(){
-	$("#list-items").on('click', 'li', function(){
-	if($(this).hasClass("not-done")){
-		$(this).removeClass("not-done");
-		$(this).addClass("completed")
+
+$(document).on('click', '.check-item', function() {
+	if($(this).parent().hasClass("not-done")){
+		$(this).parent().removeClass("not-done");
+		$(this).parent().addClass("completed")
 		localStorage.setItem('listItems', $('#list-items').html());
 	}
 	else{
-		$(this).removeClass("completed");
-		$(this).addClass("not-done");
+		$(this).parent().removeClass("completed");
+		$(this).parent().addClass("not-done");
 		localStorage.setItem('listItems', $('#list-items').html());
 	}
-	});
 });
+
+
+$(document).on('click', '.check-subitem', function() {
+  if($(this).parent().hasClass("not-done")){
+    $(this).parent().removeClass("not-done");
+    $(this).parent().addClass("completed")
+    localStorage.setItem('sublistItems', $('.sublist-items').html());
+  }
+  else{
+    $(this).parent().removeClass("completed");
+    $(this).parent().addClass("not-done");
+    localStorage.setItem('sublistItems', $('.sublist-items').html());
+  }
+});
+
 
 // Remove task
 $( ".delete-zone" ).droppable({
