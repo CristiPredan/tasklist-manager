@@ -10,7 +10,7 @@ $(document).ready(function () {
 	var item = $('#todo-list-item').val();
 
 	if(item) {
-	  $('#list-items').append("<li class='not-done'><span class='check-item'></span><span class='item-content'>" + item + "</span><span class='add-sublist material-icons'>playlist_add</span><div class='extended-item'><div class='add-subitems'><input type='text' class='todo-sublist-item' placeholder='Sublist item'><button class='add'>Add</button></div><div class='list-container'><ul class='sublist-items large'></ul></div></div></li>");
+	  $('#list-items').append("<li class='not-done'><span class='check-item'></span><span class='item-content'>" + item + "</span><span class='add-sublist material-icons'>playlist_add</span><div class='extended-item'><div class='add-subitems'><input type='text' class='todo-sublist-item' placeholder='Sublist item'><button class='add'>Add</button></div><div class='list-container'><ul class='sublist-items large connectedSortable'></ul></div></div></li>");
 	  localStorage.setItem('listItems', $('#list-items').html());
 	  $('#todo-list-item').val("");
 	}
@@ -30,7 +30,7 @@ $(document).on('click', '.add-subitems', function(event) {
 
   if(subitem) {
     $(this).parent().find("ul").append("<li class='not-done'><span class='check-subitem'></span><span class='subitem-content'>" + subitem + "</span></li>");
-    localStorage.setItem('sublistItems', $('.sublist-items').html());
+    localStorage.setSubItem('sublistItems', $('.sublist-items').html());
     $('.todo-sublist-item').parent().parent().find('.todo-sublist-item').val("");
   }  
 });
@@ -117,6 +117,12 @@ $(document).ready(function() {
   })
 });
 
+$( function() {
+  $( "#list-items, ul.sublist-items" ).sortable({
+    connectWith: ".connectedSortable"
+  }).disableSelection();
+});
+
 
 // Check and uncheck the tasks
 
@@ -138,12 +144,12 @@ $(document).on('click', '.check-subitem', function() {
   if($(this).parent().hasClass("not-done")){
     $(this).parent().removeClass("not-done");
     $(this).parent().addClass("completed")
-    localStorage.setItem('sublistItems', $('.sublist-items').html());
+    localStorage.setSubItem('sublistItems', $('.sublist-items').html());
   }
   else{
     $(this).parent().removeClass("completed");
     $(this).parent().addClass("not-done");
-    localStorage.setItem('sublistItems', $('.sublist-items').html());
+    localStorage.setSubItem('sublistItems', $('.sublist-items').html());
   }
 });
 
@@ -153,6 +159,7 @@ $( ".delete-zone" ).droppable({
 	 drop: function( event, ui ) {
 	$(this).parent().find( "ul li.ui-sortable-placeholder, ul li.ui-sortable-helper" ).remove()
 	localStorage.setItem('listItems', $('#list-items').html());
+    localStorage.setSubItem('sublistItems', $('.sublist-items').html());
 	if ($('#list-items li').length < 14) {
 		$('button[type=submit], input[type=text]').prop( 'disabled', false );
 		$('.info-message').fadeIn(100).text("The task has been erased!");
@@ -166,12 +173,14 @@ $( ".delete-zone" ).droppable({
 		$("#list-items").removeClass("small");
 		$("#list-items").addClass("medium");
 		localStorage.setItem('listItems', $('#list-items').html());
+    localStorage.setSubItem('sublistItems', $('.sublist-items').html());
 	}
 
 	if ($('#list-items li').length < 7) {
 		$("#list-items").removeClass("medium");
 		$("#list-items").addClass("large");
 		localStorage.setItem('listItems', $('#list-items').html());
+    localStorage.setSubItem('sublistItems', $('.sublist-items').html());
 	}
 	}
 });
@@ -186,7 +195,7 @@ $( ".add-items" ).droppable({
 
 	if ($('#list-items li').length < 14) {
 		$('button[type=submit], input[type=text]').prop( 'disabled', false );
-		alert("You reached the maximum items for the list!");
+		//alert("You reached the maximum items for the list!");
 	}
 
 		 setTimeout(function(){
