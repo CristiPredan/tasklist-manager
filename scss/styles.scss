@@ -140,7 +140,22 @@
     &:hover {
       color: #ccc; 
       cursor: pointer;
-    }  
+    }
+
+  &:after {
+    content: "\f115";
+    font-size: 18px;
+    font-family: 'FontAwesome';
+  }  
+
+  &.closed {
+    &:after {
+      content: "\f114";
+      font-size: 18px;
+      font-family: 'FontAwesome';
+    }
+  }
+    
 }
 
 .extended-item {
@@ -156,8 +171,20 @@
 
     button {
       position: absolute;
-      top: 10px;
+      top: 0;
       right: 15px;
     }
   }
+}
+
+.list-text-area {
+  display: none;
+}
+
+.sublist-text-area {
+  display: none;
+}
+
+input[type="text"]:focus {
+  background-color: none;
 }

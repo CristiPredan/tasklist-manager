@@ -2,6 +2,7 @@
 
 $(document).ready(function () {
   $('#list-items').html(localStorage.getItem('listItems'));
+  //$('.sublist-items').html(localStorage.getItem('sublistItems'));
 
   $('.add-items').on('submit', function(event) {
   	$('.info-message').fadeIn(100).text("Task! has been created!");
@@ -10,7 +11,7 @@ $(document).ready(function () {
 	var item = $('#todo-list-item').val();
 
 	if(item) {
-	  $('#list-items').append("<li class='not-done'><span class='check-item'></span><span class='item-content'>" + item + "</span><span class='add-sublist material-icons'>playlist_add</span><div class='extended-item'><div class='add-subitems'><input type='text' class='todo-sublist-item' placeholder='Sublist item'><button class='add'>Add</button></div><div class='list-container'><ul class='sublist-items large connectedSortable'></ul></div></div></li>");
+	  $('#list-items').append("<li class='not-done'><span class='check-item'></span><span class='item-content'>" + item + "</span><span class='add-sublist closed'></span><div class='extended-item'><div class='add-subitems'><input type='text' class='todo-sublist-item' placeholder='Sublist item'><button class='add2 btn'>Add sublist</button></div><div class='list-container'><ul class='sublist-items large connectedSortable'></ul></div></div><div class='list-text-area'><textarea class='textarea orders'></textarea><button class='btn btn-primary'>Save</button></div></li>");
 	  localStorage.setItem('listItems', $('#list-items').html());
 	  $('#todo-list-item').val("");
 	}
@@ -22,14 +23,14 @@ $(document).ready(function () {
 
 // Sublist 
 
-$(document).on('click', '.add-subitems', function(event) {
+$(document).on('click', '.add2', function(event) {
 
   event.preventDefault();
-  var subitem = $(this).find('.todo-sublist-item').val();
+  var subitem = $(this).parent().find('.todo-sublist-item').val();
 
 
   if(subitem) {
-    $(this).parent().find("ul").append("<li class='not-done'><span class='check-subitem'></span><span class='subitem-content'>" + subitem + "</span></li>");
+    $(this).parent().parent().find("ul").append("<li class='not-done'><span class='check-subitem'></span><span class='subitem-content'>" + subitem + "</span><div class='sublist-text-area'><textarea class='textarea orders'></textarea><button class='btn'>Save</button></div></li>");
     localStorage.setSubItem('sublistItems', $('.sublist-items').html());
     $('.todo-sublist-item').parent().parent().find('.todo-sublist-item').val("");
   }  
@@ -62,7 +63,7 @@ $(document).on('click', '.add-subitems', function(event) {
         $(this).change();    
     });
 
-//
+// Filter subtasks
 
   var input2 = $('.search-filter2');
     input2.change( function () {
@@ -92,18 +93,25 @@ $(document).on('click', '.add-subitems', function(event) {
     });    
 
     $(document).on('click', '.add-sublist', function() {
-      $(this).parent().find(".extended-item").slideDown(500);
+
+      if($(this).hasClass("closed")) {
+        $(this).removeClass("closed");
+        $(this).parent().find(".extended-item").slideDown(500);
+      }
+      else {
+        $(this).addClass("closed");
+        $(this).parent().find(".extended-item").slideUp(500);
+      }
     });
 
-
 });
+
 
 // Sortable feature
  $(window).on('load', function(){
-  $("#list-items").sortable();
-});
+  
+  $("#list-items").sortable("refresh");
 
-$(document).ready(function() {
   $('ul.sublist-items').sortable ({
     accept: 'sortableitem',
     helperclass: 'sorthelper',
@@ -123,7 +131,6 @@ $( function() {
   }).disableSelection();
 });
 
-
 // Check and uncheck the tasks
 
 $(document).on('click', '.check-item', function() {
@@ -139,6 +146,7 @@ $(document).on('click', '.check-item', function() {
 	}
 });
 
+// Subtasks
 
 $(document).on('click', '.check-subitem', function() {
   if($(this).parent().hasClass("not-done")){
@@ -153,7 +161,6 @@ $(document).on('click', '.check-subitem', function() {
   }
 });
 
-
 // Remove task
 $( ".delete-zone" ).droppable({
 	 drop: function( event, ui ) {
@@ -165,42 +172,48 @@ $( ".delete-zone" ).droppable({
 		$('.info-message').fadeIn(100).text("The task has been erased!");
 	}
 
-	setTimeout(function(){
-	    $(".info-message").fadeOut(400);
-	}, 2000);
-
-	if ($('#list-items li').length < 9) {
-		$("#list-items").removeClass("small");
-		$("#list-items").addClass("medium");
-		localStorage.setItem('listItems', $('#list-items').html());
-    localStorage.setSubItem('sublistItems', $('.sublist-items').html());
-	}
-
-	if ($('#list-items li').length < 7) {
-		$("#list-items").removeClass("medium");
-		$("#list-items").addClass("large");
-		localStorage.setItem('listItems', $('#list-items').html());
-    localStorage.setSubItem('sublistItems', $('.sublist-items').html());
-	}
+  	setTimeout(function(){
+  	    $(".info-message").fadeOut(400);
+  	}, 2000);
 	}
 });
 
-// Edit task
-$( ".add-items" ).droppable({
-	 drop: function( event, ui ) {
-	 	var editTask = $(this).parent().parent().find( 'ul li.ui-sortable-placeholder, ul li.ui-sortable-helper' ).text();
-	 	$('.info-message').fadeIn(100).text("Edit the task!");
-	 	$('input').val(editTask);
-	 	$(this).parent().parent().find( "ul li.ui-sortable-placeholder, ul li.ui-sortable-helper" ).remove();
+// SAVE EDITED TEXT
 
-	if ($('#list-items li').length < 14) {
-		$('button[type=submit], input[type=text]').prop( 'disabled', false );
-		//alert("You reached the maximum items for the list!");
-	}
+  $( function() {
 
-		 setTimeout(function(){
-	    $(".info-message").fadeOut(400);
-	}, 2000);
-	}
+//Save edited text for list-item     
 
+  $(document).on('click', 'span.item-content', function() {
+    $(this).parent().find("textarea").text( $(this).text() ).focus(); 
+    $(this).parent().find(".list-text-area").slideDown(200);
+  });
+
+    $(document).on('click', '.list-text-area button', function() {
+    $(this).parent().slideUp(200);
+    $(this).parent().parent().find("span.item-content").text( $(this).parent().find('textarea').val());       
+  });
+
+//Save edited text for list-item 
+
+  $(document).on('click', 'span.subitem-content', function() {
+    $(this).parent().find("textarea").text( $(this).text() ).focus(); 
+    $(this).parent().find(".sublist-text-area").slideDown(200);
+  });
+
+    $(document).on('click', '.sublist-text-area button', function() {
+    $(this).parent().slideUp(200);
+    $(this).parent().parent().find("span.subitem-content").text( $(this).parent().find('textarea').val());       
+  });
 });
+
+// Local storage save
+
+document.getElementById("app-save").addEventListener("click", function ()
+{
+  localStorage.setItem('listItems', $('#list-items').html());
+  localStorage.setSubItem('sublistItems', $('.sublist-items').html());
+} , false);
+
+
+

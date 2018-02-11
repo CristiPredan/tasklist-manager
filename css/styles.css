@@ -160,7 +160,21 @@
   cursor: pointer;
 }
 
-/* line 146, C:/Users/Cristi/Desktop/TaskManager/project/tasklist-manager/scss/styles.scss */
+/* line 145, C:/Users/Cristi/Desktop/TaskManager/project/tasklist-manager/scss/styles.scss */
+.add-sublist:after {
+  content: "\f115";
+  font-size: 18px;
+  font-family: 'FontAwesome';
+}
+
+/* line 152, C:/Users/Cristi/Desktop/TaskManager/project/tasklist-manager/scss/styles.scss */
+.add-sublist.closed:after {
+  content: "\f114";
+  font-size: 18px;
+  font-family: 'FontAwesome';
+}
+
+/* line 161, C:/Users/Cristi/Desktop/TaskManager/project/tasklist-manager/scss/styles.scss */
 .extended-item {
   width: 100%;
   height: auto;
@@ -170,16 +184,31 @@
   padding: 10px 15px;
 }
 
-/* line 154, C:/Users/Cristi/Desktop/TaskManager/project/tasklist-manager/scss/styles.scss */
+/* line 169, C:/Users/Cristi/Desktop/TaskManager/project/tasklist-manager/scss/styles.scss */
 .extended-item .add-subitems {
   position: relative;
 }
 
-/* line 157, C:/Users/Cristi/Desktop/TaskManager/project/tasklist-manager/scss/styles.scss */
+/* line 172, C:/Users/Cristi/Desktop/TaskManager/project/tasklist-manager/scss/styles.scss */
 .extended-item .add-subitems button {
   position: absolute;
-  top: 10px;
+  top: 0;
   right: 15px;
+}
+
+/* line 180, C:/Users/Cristi/Desktop/TaskManager/project/tasklist-manager/scss/styles.scss */
+.list-text-area {
+  display: none;
+}
+
+/* line 184, C:/Users/Cristi/Desktop/TaskManager/project/tasklist-manager/scss/styles.scss */
+.sublist-text-area {
+  display: none;
+}
+
+/* line 188, C:/Users/Cristi/Desktop/TaskManager/project/tasklist-manager/scss/styles.scss */
+input[type="text"]:focus {
+  background-color: none;
 }
 
 /*# sourceMappingURL=../css/styles.map */
