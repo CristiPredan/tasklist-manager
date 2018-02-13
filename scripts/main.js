@@ -11,7 +11,7 @@ $(document).ready(function () {
 	var item = $('#todo-list-item').val();
 
 	if(item) {
-	  $('#list-items').append("<li class='not-done'><span class='check-item'></span><span class='item-content'>" + item + "</span><span class='date-container'><span class='day'></span> <span class='month'></span> <span class='hour'></span><span class='minute'></span><span class='calendar fa fa-calendar'></span></span><span class='add-sublist closed'></span><div class='extended-item'><div class='add-subitems'><input type='text' class='todo-sublist-item' placeholder='Sublist item'><button class='add2 btn'>Add sublist</button></div><div class='list-container'><ul class='sublist-items large connectedSortable'></ul></div></div><div class='list-text-area'><textarea class='textarea orders'></textarea><button class='btn btn-primary'>Save</button></div></li>");
+	  $('#list-items').append("<li class='not-done'><span class='check-item'></span><span class='item-content'>" + item + "</span><span class='date-container'><span class='day'></span> <span class='month'></span> <span class='hour'></span><span class='minute'></span><span class='calendar fa fa-calendar'></span></span><span class='add-sublist closed active'></span><div class='extended-item'><div class='add-subitems'><input type='text' class='todo-sublist-item' placeholder='Sublist item'><button class='add2 btn'>Add sublist</button></div><div class='list-container'><ul class='sublist-items large connectedSortable'></ul></div></div><div class='list-text-area'><textarea class='textarea orders'></textarea><button class='btn btn-primary'>Save</button></div></li>");
 	  localStorage.setItem('listItems', $('#list-items').html());
 	  $('#todo-list-item').val("");
 	}
@@ -23,17 +23,20 @@ $(document).ready(function () {
 
 $(document).on('click', '.add2', function(event) {
 
+
   event.preventDefault();
   var subitem = $(this).parent().find('.todo-sublist-item').val();
 
+
+  $(this).parent().parent().find("input").val(" "); 
 
   if(subitem) {
     $(this).parent().parent().find("ul").append("<li class='not-done'><span class='check-subitem'></span><span class='subitem-content'>" + subitem + "</span><span class='date-container'><span class='day'></span> <span class='month'></span> <span class='hour'></span><span class='minute'></span><span class='calendar2 fa fa-calendar'></span></span><div class='sublist-text-area'><textarea class='textarea orders'></textarea><button class='btn'>Save</button></div></li>");
 
       localStorage.setSubItem('sublistItems', $('.sublist-items').html());
       $('.todo-sublist-item').parent().parent().find('.todo-sublist-item').val("");
+  } 
 
-  }  
 });
 
 // Filter function
@@ -163,9 +166,11 @@ $(document).on('click', '.check-subitem', function() {
 
 // ADD DATE
 
-$(document).on('click', '.calendar', function() {
+$(document).on('click', '.calendar, .add-sublist.active', function() {
 
-   $(this).parent().find('.calendar').hide();
+  $(this).removeClass("active");
+
+  $(this).parent().find('.calendar').hide();
 
   var months = ["January",
               "February",
