@@ -11,17 +11,16 @@ $(document).ready(function () {
 	var item = $('#todo-list-item').val();
 
 	if(item) {
-	  $('#list-items').append("<li class='not-done'><span class='check-item'></span><span class='item-content'>" + item + "</span><span class='date-container'><span class='day'></span> <span class='month'></span> <span class='hour'></span><span class='minute'></span><span class='calendar fa fa-calendar'></span></span><span class='add-sublist closed active'></span><div class='extended-item'><div class='add-subitems'><input type='text' class='todo-sublist-item' placeholder='Sublist item'><button class='add2 btn'>Add sublist</button></div><div class='list-container'><ul class='sublist-items large connectedSortable'></ul></div></div><div class='list-text-area'><textarea class='textarea orders'></textarea><button class='btn btn-primary'>Save</button></div></li>");
+	  $('#list-items').append("<li class='not-done'><span class='check-item'></span><span class='item-content'>" + item + "</span><span class='date-container'><span class='day'></span> <span class='month'></span> <span class='hour'></span><span class='minute'></span><span class='calendar fa fa-calendar'></span></span><span class='add-sublist closed active'></span><div class='extended-item'><div class='add-subitems'><input type='text' placeholder='Enter a subtask' class='todo-sublist-item' placeholder='Sublist item'><button class='add2 btn orange'>Add sublist</button></div><div class='list-container'><ul class='sublist-items large connectedSortable'></ul></div></div><div class='list-text-area'><textarea class='textarea orders'></textarea><button class='btn btn-primary save'>Save</button><div class='colors-container'><button class='color-button color-red'></button><button class='color-button color-orange'></button><button class='color-button color-green'></button><button class='color-button color-black'></button></div></div></li>");
 	  localStorage.setItem('listItems', $('#list-items').html());
-	  $('#todo-list-item').val("");
+	  $('#todo-list-item').val(""); 
 	}
-
 
   });
 
 // Sublist 
 
-$(document).on('click', '.add2', function(event) {
+$(document).on('click', '.add2', function(event) {  
 
 
   event.preventDefault();
@@ -31,7 +30,7 @@ $(document).on('click', '.add2', function(event) {
   $(this).parent().parent().find("input").val(" "); 
 
   if(subitem) {
-    $(this).parent().parent().find("ul").append("<li class='not-done'><span class='check-subitem'></span><span class='subitem-content'>" + subitem + "</span><span class='date-container'><span class='day'></span> <span class='month'></span> <span class='hour'></span><span class='minute'></span><span class='calendar2 fa fa-calendar'></span></span><div class='sublist-text-area'><textarea class='textarea orders'></textarea><button class='btn'>Save</button></div></li>");
+    $(this).parent().parent().find("ul").append("<li class='not-done'><span class='check-subitem'></span><span class='subitem-content'>" + subitem + "</span><span class='date-container'><span class='day'></span> <span class='month'></span> <span class='hour'></span><span class='minute'></span><span class='calendar2 fa fa-calendar'></span></span><div class='sublist-text-area'><textarea class='textarea orders'></textarea><button class='btn save'>Save</button><div class='colors-container'><button class='color-button color-red'></button><button class='color-button color-orange'></button><button class='color-button color-green'></button><button class='color-button color-black'></button></div></div></li>");
 
       localStorage.setSubItem('sublistItems', $('.sublist-items').html());
       $('.todo-sublist-item').parent().parent().find('.todo-sublist-item').val("");
@@ -242,7 +241,7 @@ $( ".delete-zone" ).droppable({
     $(this).parent().find(".list-text-area").slideDown(200);
   });
 
-    $(document).on('click', '.list-text-area button', function() {
+    $(document).on('click', '.list-text-area button.save', function() {
     $(this).parent().slideUp(200);
     $(this).parent().parent().find("span.item-content").text( $(this).parent().find('textarea').val());       
   });
@@ -254,9 +253,34 @@ $( ".delete-zone" ).droppable({
     $(this).parent().find(".sublist-text-area").slideDown(200);
   });
 
-    $(document).on('click', '.sublist-text-area button', function() {
+    $(document).on('click', '.sublist-text-area button.save', function() {
     $(this).parent().slideUp(200);
     $(this).parent().parent().find("span.subitem-content").text( $(this).parent().find('textarea').val());       
+  });
+
+
+  $(document).on('click', '.color-red', function() {
+    $(this).parent().parent().parent().find("span.item-content").text( $(this).parent().find('textarea').val() ).css('color','#C93F30'); 
+
+    $(this).parent().parent().parent().find("span.subitem-content").text( $(this).parent().find('textarea').val() ).css('color','#C93F30'); 
+  });
+
+  $(document).on('click', '.color-orange', function() {
+    $(this).parent().parent().parent().find("span.item-content").text( $(this).parent().find('textarea').val() ).css('color','#F6AE7C'); 
+
+    $(this).parent().parent().parent().find("span.subitem-content").text( $(this).parent().find('textarea').val() ).css('color','#F6AE7C'); 
+  });
+
+  $(document).on('click', '.color-green', function() {
+    $(this).parent().parent().parent().find("span.item-content").text( $(this).parent().find('textarea').val() ).css('color','#5FC44F'); 
+
+    $(this).parent().parent().parent().find("span.subitem-content").text( $(this).parent().find('textarea').val() ).css('color','#5FC44F'); 
+  });
+
+  $(document).on('click', '.color-black', function() {
+    $(this).parent().parent().parent().find("span.item-content").text( $(this).parent().find('textarea').val() ).css('color','#2A2A28'); 
+
+    $(this).parent().parent().parent().find("span.subitem-content").text( $(this).parent().find('textarea').val() ).css('color','#2A2A28'); 
   });
 });
 
@@ -267,6 +291,5 @@ document.getElementById("app-save").addEventListener("click", function ()
   localStorage.setItem('listItems', $('#list-items').html());
   localStorage.setSubItem('sublistItems', $('.sublist-items').html());
 } , false);
-
 
 

@@ -1,253 +1,274 @@
 /* You can add global styles to this file, and also import other style files */
-/* line 3, C:/Users/Cristi/Desktop/TaskManager/project/tasklist-manager/scss/styles.scss */
-* {
-  font-family: sans-serif;
-}
+/* Variables */
+/* Light colors */
+/* Colors */
+/* Grey Pallet */
+/* Extends */
+#list-items li.not-done .check-item, #list-items li.completed .check-item, .sublist-items li.not-done .check-subitem, .sublist-items li.completed .check-subitem, .colors-container {
+  display: inline-block;
+  vertical-align: middle; }
 
-/* line 7, C:/Users/Cristi/Desktop/TaskManager/project/tasklist-manager/scss/styles.scss */
+.date-container .hour:after {
+  display: inline-block;
+  vertical-align: top; }
+
+* {
+  font-family: sans-serif; }
+
 .input-container {
   padding: 0 15px;
-  margin: 0 0 15px 0;
-}
+  margin: 0 0 15px 0; }
 
-/* line 12, C:/Users/Cristi/Desktop/TaskManager/project/tasklist-manager/scss/styles.scss */
+#app-save {
+  margin: 0 0 0 15px; }
+
+.app-wrapper {
+  padding: 0 0 85px 0; }
+
 .list-container {
-  padding: 0 15px;
-}
+  padding: 0 15px; }
 
-/* line 16, C:/Users/Cristi/Desktop/TaskManager/project/tasklist-manager/scss/styles.scss */
 .filter-container {
-  padding: 0 15px;
-}
+  padding: 0 15px; }
 
-/* line 22, C:/Users/Cristi/Desktop/TaskManager/project/tasklist-manager/scss/styles.scss */
 #list-items li.not-done {
   position: relative;
   padding: 10px 10px 10px 25px;
-  border: 1px solid #ccc;
+  border: 1px solid #e5e5e5;
   margin: 0 0 10px 0;
-}
+  background-color: #fafafa; }
+  #list-items li.not-done .check-item {
+    position: absolute;
+    top: 10px;
+    left: 5px; }
+    #list-items li.not-done .check-item:before {
+      content: "\f14a";
+      color: #e5e5e5;
+      font-size: 18px;
+      line-height: 18px;
+      font-family: 'FontAwesome'; }
 
-/* line 28, C:/Users/Cristi/Desktop/TaskManager/project/tasklist-manager/scss/styles.scss */
-#list-items li.not-done .check-item {
-  display: inline-block;
-  vertical-align: middle;
-  position: absolute;
-  top: 10px;
-  left: 5px;
-}
-
-/* line 35, C:/Users/Cristi/Desktop/TaskManager/project/tasklist-manager/scss/styles.scss */
-#list-items li.not-done .check-item:before {
-  content: "\f14a";
-  color: #ccc;
-  font-size: 18px;
-  line-height: 18px;
-  font-family: 'FontAwesome';
-}
-
-/* line 45, C:/Users/Cristi/Desktop/TaskManager/project/tasklist-manager/scss/styles.scss */
 #list-items li.completed {
   position: relative;
   padding: 10px 10px 10px 25px;
-  border: 1px solid #ccc;
-  margin: 0 0 10px 0;
-}
+  border: 1px solid #e5e5e5;
+  margin: 0 0 10px 0; }
+  #list-items li.completed .check-item {
+    position: absolute;
+    top: 10px;
+    left: 5px; }
+    #list-items li.completed .check-item:before {
+      content: "\f14a";
+      color: green;
+      font-size: 18px;
+      line-height: 18px;
+      font-family: 'FontAwesome'; }
+  #list-items li.completed .item-content {
+    text-decoration: line-through; }
+  #list-items li.completed .extended-item {
+    opacity: 0.5 !important; }
 
-/* line 51, C:/Users/Cristi/Desktop/TaskManager/project/tasklist-manager/scss/styles.scss */
-#list-items li.completed .check-item {
-  display: inline-block;
-  vertical-align: middle;
+.sublist-items li {
+  margin-left: 20px !important;
+  background-color: #fff !important;
+  padding: 5px 25px 5px !important;
+  margin-bottom: 7px !important; }
+
+.sublist-items li:before {
+  border-left: 1px dotted #9298A0;
+  bottom: 0;
+  content: "";
+  height: 100%;
+  left: -37px;
+  min-height: 42px;
   position: absolute;
-  top: 10px;
-  left: 5px;
-}
+  top: -8px;
+  width: 1px;
+  transition: 1s; }
 
-/* line 58, C:/Users/Cristi/Desktop/TaskManager/project/tasklist-manager/scss/styles.scss */
-#list-items li.completed .check-item:before {
-  content: "\f14a";
-  color: green;
-  font-size: 18px;
-  line-height: 18px;
-  font-family: 'FontAwesome';
-}
+.sublist-items li:first-child:before {
+  top: -22px;
+  min-height: 71px; }
 
-/* line 66, C:/Users/Cristi/Desktop/TaskManager/project/tasklist-manager/scss/styles.scss */
-#list-items li.completed .item-content {
-  text-decoration: line-through;
-}
+.sublist-items li:last-child:before {
+  /*top: -22px;*/
+  /*    top: -50%;
+    min-height: 0;*/ }
 
-/* line 70, C:/Users/Cristi/Desktop/TaskManager/project/tasklist-manager/scss/styles.scss */
-#list-items li.completed .extended-item {
-  opacity: 0.5 !important;
-}
+.sublist-items li:after {
+  border-bottom: 1px dotted #9298A0;
+  content: "";
+  display: block;
+  height: 1px;
+  left: -35px;
+  margin: -1px 0 0;
+  position: absolute;
+  top: 50%;
+  width: 35px;
+  transition: 1s; }
 
-/* line 78, C:/Users/Cristi/Desktop/TaskManager/project/tasklist-manager/scss/styles.scss */
 .sublist-items li.not-done {
   position: relative;
-  padding: 10px 10px 10px 25px;
-  border: 1px solid #ccc;
-  margin: 0 0 10px 0;
-}
+  padding: 10px 10px 10px 45px;
+  border: 1px solid #e5e5e5;
+  margin: 0 0 10px 0; }
+  .sublist-items li.not-done .check-subitem {
+    position: absolute;
+    top: 10px;
+    left: 5px; }
+    .sublist-items li.not-done .check-subitem:before {
+      content: "\f14a";
+      color: #e5e5e5;
+      font-size: 18px;
+      line-height: 18px;
+      font-family: 'FontAwesome'; }
 
-/* line 84, C:/Users/Cristi/Desktop/TaskManager/project/tasklist-manager/scss/styles.scss */
-.sublist-items li.not-done .check-subitem {
-  display: inline-block;
-  vertical-align: middle;
-  position: absolute;
-  top: 10px;
-  left: 5px;
-}
-
-/* line 91, C:/Users/Cristi/Desktop/TaskManager/project/tasklist-manager/scss/styles.scss */
-.sublist-items li.not-done .check-subitem:before {
-  content: "\f14a";
-  color: #ccc;
-  font-size: 18px;
-  line-height: 18px;
-  font-family: 'FontAwesome';
-}
-
-/* line 101, C:/Users/Cristi/Desktop/TaskManager/project/tasklist-manager/scss/styles.scss */
 .sublist-items li.completed {
   position: relative;
   padding: 10px 10px 10px 25px;
-  border: 1px solid #ccc;
+  border: 1px solid #a6a6a6;
   margin: 0 0 10px 0;
-  background-color: #fff;
-}
+  background-color: #fff; }
+  .sublist-items li.completed .check-subitem {
+    position: absolute;
+    top: 10px;
+    left: 5px; }
+    .sublist-items li.completed .check-subitem:before {
+      content: "\f14a";
+      color: green;
+      font-size: 18px;
+      line-height: 18px;
+      font-family: 'FontAwesome'; }
+  .sublist-items li.completed .subitem-content {
+    opacity: 0.7;
+    text-decoration: line-through; }
 
-/* line 108, C:/Users/Cristi/Desktop/TaskManager/project/tasklist-manager/scss/styles.scss */
-.sublist-items li.completed .check-subitem {
-  display: inline-block;
-  vertical-align: middle;
-  position: absolute;
-  top: 10px;
-  left: 5px;
-}
+.todo-sublist-item {
+  padding-left: 10px !important;
+  margin-left: -1px !important;
+  border-left: 1px solid #f8f8f8 !important; }
 
-/* line 115, C:/Users/Cristi/Desktop/TaskManager/project/tasklist-manager/scss/styles.scss */
-.sublist-items li.completed .check-subitem:before {
-  content: "\f14a";
-  color: green;
-  font-size: 18px;
-  line-height: 18px;
-  font-family: 'FontAwesome';
-}
-
-/* line 123, C:/Users/Cristi/Desktop/TaskManager/project/tasklist-manager/scss/styles.scss */
-.sublist-items li.completed .subitem-content {
-  opacity: 0.7;
-  text-decoration: line-through;
-}
-
-/* line 130, C:/Users/Cristi/Desktop/TaskManager/project/tasklist-manager/scss/styles.scss */
 .delete-zone {
-  width: 100%;
-  height: 100px;
+  position: fixed;
+  bottom: 0px;
+  right: 18px;
+  left: 14px;
+  width: 98.5%;
+  height: 75px;
   border: 1px dashed #999;
-}
+  background-color: #fff;
+  text-align: center; }
+  .delete-zone .font-icon {
+    font-size: 36px;
+    line-height: 75px; }
 
-/* line 136, C:/Users/Cristi/Desktop/TaskManager/project/tasklist-manager/scss/styles.scss */
 .add-sublist {
   float: right !important;
-}
+  color: #999; }
+  .add-sublist:hover {
+    color: #e5e5e5;
+    cursor: pointer; }
+  .add-sublist:after {
+    content: "\f115";
+    font-size: 18px;
+    font-family: 'FontAwesome'; }
+  .add-sublist.closed:after {
+    content: "\f114";
+    font-size: 18px;
+    font-family: 'FontAwesome'; }
 
-/* line 139, C:/Users/Cristi/Desktop/TaskManager/project/tasklist-manager/scss/styles.scss */
-.add-sublist:hover {
-  color: #ccc;
-  cursor: pointer;
-}
-
-/* line 144, C:/Users/Cristi/Desktop/TaskManager/project/tasklist-manager/scss/styles.scss */
-.add-sublist:after {
-  content: "\f115";
-  font-size: 18px;
-  font-family: 'FontAwesome';
-}
-
-/* line 151, C:/Users/Cristi/Desktop/TaskManager/project/tasklist-manager/scss/styles.scss */
-.add-sublist.closed:after {
-  content: "\f114";
-  font-size: 18px;
-  font-family: 'FontAwesome';
-}
-
-/* line 160, C:/Users/Cristi/Desktop/TaskManager/project/tasklist-manager/scss/styles.scss */
 .extended-item {
   width: 100%;
   height: auto;
-  background-color: #f8f8f8;
-  border: 1px dashed #333;
+  background-color: #fafafa;
   display: none;
-  padding: 10px 15px;
-}
+  padding: 10px 15px 10px 25px; }
+  .extended-item .add-subitems {
+    position: relative; }
+    .extended-item .add-subitems input[type="text"] {
+      height: 28px; }
+    .extended-item .add-subitems button {
+      position: absolute;
+      top: -5px;
+      right: 15px; }
 
-/* line 168, C:/Users/Cristi/Desktop/TaskManager/project/tasklist-manager/scss/styles.scss */
-.extended-item .add-subitems {
-  position: relative;
-}
-
-/* line 171, C:/Users/Cristi/Desktop/TaskManager/project/tasklist-manager/scss/styles.scss */
-.extended-item .add-subitems button {
-  position: absolute;
-  top: 0;
-  right: 15px;
-}
-
-/* line 179, C:/Users/Cristi/Desktop/TaskManager/project/tasklist-manager/scss/styles.scss */
 .date-container {
   position: absolute;
   right: 50px;
   font-size: 12px;
-  color: #ccc;
-}
+  color: #7C0079; }
+  .date-container .hour:after {
+    content: ":";
+    margin: 0 3px; }
+  .date-container .calendar, .date-container .calendar2 {
+    margin: 2px 0px 2px 10px;
+    color: #999;
+    font-size: 18px; }
 
-/* line 187, C:/Users/Cristi/Desktop/TaskManager/project/tasklist-manager/scss/styles.scss */
-.date-container .hour:after {
-  content: ":";
-  display: inline-block;
-  vertical-align: top;
-  margin: 0 3px;
-}
+.btn {
+  height: 26px !important;
+  padding: 0 1rem !important;
+  font-size: 12px !important;
+  line-height: 26px !important;
+  background-color: #315BA4 !important; }
+  .btn.orange {
+    background-color: #F18132 !important; }
 
-/* line 195, C:/Users/Cristi/Desktop/TaskManager/project/tasklist-manager/scss/styles.scss */
-.date-container .calendar, .date-container .calendar2 {
-  margin: 2px 0px 2px 10px;
-  color: #333;
-  font-size: 18px;
-}
-
-/* line 202, C:/Users/Cristi/Desktop/TaskManager/project/tasklist-manager/scss/styles.scss */
 .list-text-area {
-  display: none;
-}
+  display: none; }
 
-/* line 206, C:/Users/Cristi/Desktop/TaskManager/project/tasklist-manager/scss/styles.scss */
+textarea {
+  margin: 0 0 5px 0;
+  resize: none; }
+
 .sublist-text-area {
-  display: none;
-}
+  display: none; }
 
-/* line 210, C:/Users/Cristi/Desktop/TaskManager/project/tasklist-manager/scss/styles.scss */
 input[type="text"]:focus {
-  background-color: none;
-}
+  background-color: none; }
 
-/* line 215, C:/Users/Cristi/Desktop/TaskManager/project/tasklist-manager/scss/styles.scss */
 .completed .extended-item {
-  position: relative;
-}
+  position: relative; }
+  .completed .extended-item:after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(255, 255, 255, 0.3); }
 
-/* line 217, C:/Users/Cristi/Desktop/TaskManager/project/tasklist-manager/scss/styles.scss */
-.completed .extended-item:after {
-  content: "";
-  display: block;
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background: rgba(255, 255, 255, 0.3);
-}
+/* Text color */
+.colors-container {
+  margin: 2px 10px 0 10px; }
 
-/*# sourceMappingURL=../css/styles.map */
+.color-button {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  border: 0px solid #e5e5e5;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  margin: -5px 0 0 5px;
+  cursor: pointer; }
+  .color-button.color-red {
+    background: #EB6F71; }
+  .color-button.color-orange {
+    background: #F18132; }
+  .color-button.color-green {
+    background: #5FC44F; }
+  .color-button.color-black {
+    background: #2A2A28; }
+
+input::-webkit-input-placeholder {
+  color: #999; }
+
+input::-moz-placeholder {
+  color: #999; }
+
+input:-ms-input-placeholder {
+  color: #999; }
+
+input:-moz-placeholder {
+  color: #999; }

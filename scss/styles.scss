@@ -1,5 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 
+@import './partials/variables';
+@import './partials/extends';
+
 * {
   font-family: sans-serif;
 }
@@ -7,6 +10,14 @@
 .input-container {
   padding: 0 15px;
   margin: 0 0 15px 0;
+}
+
+#app-save {
+  margin: 0 0 0 15px;
+}
+
+.app-wrapper {
+  padding: 0 0 85px 0;
 }
 
 .list-container {
@@ -21,20 +32,20 @@
 
   li.not-done {
     position: relative;
-    padding: 10px 10px 10px 25px;
-    border: 1px solid #ccc;
+    padding: 10px 10px 10px 25px; 
+    border: 1px solid $grey-border;
     margin: 0 0 10px 0;
+    background-color: $grey-fade-background;
 
     .check-item {
-      display: inline-block;
-      vertical-align: middle;
+      @extend %display-middle;
       position: absolute;
       top: 10px;
       left: 5px;
 
       &:before {
         content: "\f14a";
-        color: #ccc;
+        color: $grey-border;
         font-size: 18px;
         line-height: 18px;
         font-family: 'FontAwesome';
@@ -45,12 +56,11 @@
   li.completed {
     position: relative;
     padding: 10px 10px 10px 25px;
-    border: 1px solid #ccc;
+    border: 1px solid $grey-border;
     margin: 0 0 10px 0;
 
     .check-item {
-      display: inline-block;
-      vertical-align: middle;
+      @extend %display-middle; 
       position: absolute;
       top: 10px;
       left: 5px;
@@ -73,24 +83,68 @@
   }
 }
 
-.sublist-items {   
+.sublist-items {  
+
+  li {
+    margin-left: 20px !important;
+    background-color: $white-color !important;
+    padding: 5px 25px 5px !important;
+    margin-bottom: 7px !important;
+  } 
+
+  li:before {
+    border-left: 1px dotted $dark-grey;
+    bottom: 0;
+    content: "";
+    height: 100%;
+    left: -37px;
+    min-height: 42px;
+    position: absolute;
+    top: -8px;
+    width: 1px;
+    transition: 1s; 
+  }
+
+  li:first-child:before { 
+    top: -22px;
+    min-height: 71px;
+  }
+
+  li:last-child:before {
+    /*top: -22px;*/
+/*    top: -50%;
+    min-height: 0;*/
+  }
+
+
+  li:after{
+    border-bottom: 1px dotted $dark-grey;
+    content: "";
+    display: block;
+    height: 1px;
+    left: -35px;
+    margin: -1px 0 0;
+    position: absolute;
+    top: 50%;
+    width: 35px;
+    transition: 1s;
+  }
 
   li.not-done {
     position: relative;
-    padding: 10px 10px 10px 25px;
-    border: 1px solid #ccc;
+    padding: 10px 10px 10px 45px;
+    border: 1px solid $grey-border;
     margin: 0 0 10px 0;
 
    .check-subitem {
-      display: inline-block;
-      vertical-align: middle;
+      @extend %display-middle;
       position: absolute;
       top: 10px;
       left: 5px;
 
       &:before {
         content: "\f14a";
-        color: #ccc;
+        color: $grey-border;
         font-size: 18px;
         line-height: 18px;
         font-family: 'FontAwesome';
@@ -101,13 +155,12 @@
   li.completed {
     position: relative;
     padding: 10px 10px 10px 25px;
-    border: 1px solid #ccc;
+    border: 1px solid #a6a6a6;
     margin: 0 0 10px 0;
     background-color: #fff;
 
     .check-subitem {
-      display: inline-block;
-      vertical-align: middle;
+      @extend %display-middle;
       position: absolute;
       top: 10px;
       left: 5px;
@@ -120,24 +173,42 @@
         font-family: 'FontAwesome';
       }
     }
-    .subitem-content {
+    .subitem-content { 
       opacity: 0.7;
       text-decoration: line-through;
     }
   }
 }
 
+.todo-sublist-item {
+  padding-left: 10px !important;
+  margin-left: -1px !important;
+  border-left: 1px solid #f8f8f8 !important;
+} 
+
 .delete-zone {
-  width: 100%;
-  height: 100px;
-  border: 1px dashed #999;
+  position: fixed;
+  bottom: 0px;
+  right: 18px;
+  left: 14px;
+  width: 98.5%;
+  height: 75px;
+  border: 1px dashed $icon-grey;
+  background-color: #fff;
+  text-align: center;
+
+  .font-icon {
+    font-size: 36px;
+    line-height: 75px;
+  }
 }
 
-.add-sublist {
+.add-sublist { 
   float: right !important;
+  color: $icon-grey;
 
     &:hover {
-      color: #ccc; 
+      color: $grey-border; 
       cursor: pointer;
     }
 
@@ -157,20 +228,23 @@
     
 }
 
-.extended-item {
+.extended-item { 
   width: 100%;
   height: auto;
-  background-color: #f8f8f8;
-  border: 1px dashed #333;
+  background-color: $grey-fade-background;
   display: none;
-  padding: 10px 15px;
+  padding: 10px 15px 10px 25px;
 
   .add-subitems {
     position: relative;
 
+    input[type="text"] {
+      height: 28px;
+    }
+
     button {
       position: absolute;
-      top: 0;
+      top: -5px;
       right: 15px;
     }
   }
@@ -180,27 +254,43 @@
   position: absolute;
   right: 50px;
   font-size: 12px;
-  color: #ccc;
+  color: $purple-color;
 
   .hour {
 
     &:after {
       content: ":";
-      display: inline-block;
-      vertical-align: top;
+      @extend %display-top;
       margin: 0 3px;
     }
   }
 
   .calendar, .calendar2 {
     margin: 2px 0px 2px 10px;
-    color: #333;
-    font-size: 18px;
+    color: $icon-grey;
+    font-size: 18px; 
+  }
+}
+
+.btn {
+  height: 26px !important; 
+  padding: 0 1rem !important;
+  font-size: 12px !important;
+  line-height: 26px !important;
+  background-color: $dark-blue-color !important;
+
+  &.orange {
+    background-color: $orange-color !important;
   }
 }
 
 .list-text-area {
   display: none;
+}
+
+textarea {
+  margin: 0 0 5px 0;
+  resize: none;
 }
 
 .sublist-text-area {
@@ -227,3 +317,49 @@ input[type="text"]:focus {
   } 
 }
 
+/* Text color */
+
+.colors-container {
+  @extend %display-middle;
+  margin: 2px 10px 0 10px;
+}
+
+.color-button {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  border: 0px solid $grey-border;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  margin: -5px 0 0 5px; 
+  cursor: pointer;
+
+  &.color-red {
+    background: $red-color;
+  }
+
+  &.color-orange {
+    background: $orange-color;
+  }
+
+  &.color-green {
+    background: $green-color;
+  }
+
+  &.color-black {
+    background: $dark-grey-color;
+  }
+}
+
+input::-webkit-input-placeholder {
+  color: $icon-grey;
+}
+input::-moz-placeholder {
+  color: $icon-grey;
+}
+input:-ms-input-placeholder {
+  color: $icon-grey;
+}
+input:-moz-placeholder {
+  color: $icon-grey;
+}

@@ -1,0 +1,17 @@
+/* Extends */
+
+%display-middle {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+%display-top {
+  display: inline-block;
+  vertical-align: top;
+}
+
+%ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
