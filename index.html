@@ -15,28 +15,61 @@
     </head>
 
     <body>
-      <div class="app-wrapper" id="app">
-        <div class="input-container">
-          <form class="add-items">
-            <input type="text" id="todo-list-item" placeholder="List item">
-            <button class="add btn orange" type="submit">Add</button>
-            <button id="app-save" class="btn">Save</button>
-          </form><!-- /.add-items -->
-        </div>
-        <div class="filter-container">
-          <input type="text" class="search-filter" placeholder="Filter items"/>
-        </div>
-
-        <div class="filter-container">
-          <input type="text" class="search-filter2" placeholder="Filter subitems"/>
-        </div>    
-        <div class="list-container">
-          <ul id="list-items" class="large"></ul>
-          <div class="delete-zone" data-role="footer" data-position="fixed">
-            <span class="font-icon fa fa-trash-o"></span>
+      <div class="app-layout-wrapper">
+        <div class="app-header clearfix">
+          <div class="logo left">
+            <img src="assets/img/logo.png" width="40" height="40"/>
           </div>
-        </div><!-- /.list-content -->
-      </div><!-- /.app-wrapper -->  
+
+          <div class="app-menu">
+            <a class="app-menu-item">
+              <span class="fa fa-list"></span>
+            </a><!-- /.app-menu-item --> 
+
+            <a class="app-menu-item">
+              <span class="fa fa-calendar"></span>
+            </a><!-- /.app-menu-item --> 
+
+            <a class="app-menu-item">
+              <span class="fa fa-sticky-note"></span>
+            </a><!-- /.app-menu-item -->
+
+            <a class="app-menu-item">
+              <span class="fa fa-leanpub"></span>
+            </a><!-- /.app-menu-item -->  
+          </div>  
+          
+          <div class="filters-wrapper right">
+            <span class="custom-icon fa fa-search"></span>
+            <div class="filter-container">
+              <input type="text" class="search-filter" placeholder="Filter items"/>
+            </div>
+
+            <div class="filter-container">
+              <input type="text" class="search-filter2" placeholder="Filter subitems"/>
+          </div> 
+          </div><!-- /.filters-wrapper -->  
+        </div><!-- /.app-header -->  
+        <div class="app-wrapper" id="app">
+
+          <div class="app-wrapper-inner">
+            <div class="input-container">
+              <form class="add-items">
+                <input type="text" id="todo-list-item" placeholder="List item">
+                <button class="add btn orange" type="submit">Add</button>
+                <button id="app-save" class="btn">Save</button>
+              </form><!-- /.add-items -->
+            </div>
+
+            <div class="list-container">
+              <ul id="list-items" class="large"></ul>
+              <div class="delete-zone" data-role="footer" data-position="fixed">
+                <span class="font-icon fa fa-trash-o"></span>
+              </div>
+            </div><!-- /.list-content -->
+          </div><!-- /.app-wrapper-inner -->  
+        </div><!-- /.app-wrapper -->
+      </div><!-- /.app-layout-wrapper -->    
       <!--Import jQuery before materialize.js-->
       <!-- <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script> -->
       <script type="text/javascript" src="scripts/materialize/materialize.min.js"></script>

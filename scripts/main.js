@@ -11,7 +11,7 @@ $(document).ready(function () {
 	var item = $('#todo-list-item').val();
 
 	if(item) {
-	  $('#list-items').append("<li class='not-done'><span class='check-item'></span><span class='item-content'>" + item + "</span><span class='date-container'><span class='day'></span> <span class='month'></span> <span class='hour'></span><span class='minute'></span><span class='calendar fa fa-calendar'></span></span><span class='add-sublist closed active'></span><div class='extended-item'><div class='add-subitems'><input type='text' placeholder='Enter a subtask' class='todo-sublist-item' placeholder='Sublist item'><button class='add2 btn orange'>Add sublist</button></div><div class='list-container'><ul class='sublist-items large connectedSortable'></ul></div></div><div class='list-text-area'><textarea class='textarea orders'></textarea><button class='btn btn-primary save'>Save</button><div class='colors-container'><button class='color-button color-red'></button><button class='color-button color-orange'></button><button class='color-button color-green'></button><button class='color-button color-black'></button></div></div></li>");
+	  $('#list-items').append("<li class='not-done'><span class='check-item'></span><span class='item-content'>" + item + "</span><span class='date-container'><span class='day'></span> <span class='month'></span><span class='calendar fa fa-calendar'></span></span><span class='add-sublist closed active'></span><div class='extended-item'><div class='add-subitems'><input type='text' placeholder='Enter a subtask' class='todo-sublist-item' placeholder='Sublist item'><button class='add2 btn orange'>Add sublist</button></div><div class='list-container'><ul class='sublist-items large connectedSortable'></ul></div></div><div class='list-text-area'><textarea class='textarea orders'></textarea><button class='btn btn-primary save'>Save</button><div class='colors-container'><button class='color-button color-red'></button><button class='color-button color-orange'></button><button class='color-button color-green'></button><button class='color-button color-black'></button></div></div></li>");
 	  localStorage.setItem('listItems', $('#list-items').html());
 	  $('#todo-list-item').val(""); 
 	}
@@ -23,14 +23,18 @@ $(document).ready(function () {
 $(document).on('click', '.add2', function(event) {  
 
 
+
   event.preventDefault();
   var subitem = $(this).parent().find('.todo-sublist-item').val();
 
+  if(subitem === " ") { 
+    return false;
+  }
 
   $(this).parent().parent().find("input").val(" "); 
 
   if(subitem) {
-    $(this).parent().parent().find("ul").append("<li class='not-done'><span class='check-subitem'></span><span class='subitem-content'>" + subitem + "</span><span class='date-container'><span class='day'></span> <span class='month'></span> <span class='hour'></span><span class='minute'></span><span class='calendar2 fa fa-calendar'></span></span><div class='sublist-text-area'><textarea class='textarea orders'></textarea><button class='btn save'>Save</button><div class='colors-container'><button class='color-button color-red'></button><button class='color-button color-orange'></button><button class='color-button color-green'></button><button class='color-button color-black'></button></div></div></li>");
+    $(this).parent().parent().find("ul").append("<li class='not-done'><span class='check-subitem'></span><span class='subitem-content'>" + subitem + "</span><span class='date-container'><span class='day'></span> <span class='month'></span><span class='calendar2 fa fa-calendar'></span></span><div class='sublist-text-area'><textarea class='textarea orders'></textarea><button class='btn save'>Save</button><div class='colors-container'><button class='color-button color-red'></button><button class='color-button color-orange'></button><button class='color-button color-green'></button><button class='color-button color-black'></button></div></div></li>");
 
       localStorage.setSubItem('sublistItems', $('.sublist-items').html());
       $('.todo-sublist-item').parent().parent().find('.todo-sublist-item').val("");
@@ -140,6 +144,7 @@ $(document).on('click', '.check-item', function() {
 		$(this).parent().removeClass("not-done");
 		$(this).parent().addClass("completed")
 		localStorage.setItem('listItems', $('#list-items').html());
+    $(this).parent().find(".sublist-text-area, .list-text-area").hide();
 	}
 	else{
 		$(this).parent().removeClass("completed");
@@ -239,6 +244,10 @@ $( ".delete-zone" ).droppable({
   $(document).on('click', 'span.item-content', function() {
     $(this).parent().find("textarea").text( $(this).text() ).focus(); 
     $(this).parent().find(".list-text-area").slideDown(200);
+
+    if($(this).parent().hasClass("completed")) {
+      $(this).parent().find(".list-text-area").hide();
+    }
   });
 
     $(document).on('click', '.list-text-area button.save', function() {
