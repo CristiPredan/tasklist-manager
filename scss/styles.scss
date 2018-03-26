@@ -39,7 +39,7 @@
 
       span {
         color: $white-color;
-        font-size: 32px;
+        font-size: 24px;
         line-height: 40px;
       }
 
@@ -69,12 +69,13 @@
     @extend %display-middle;
     margin: 0 5px 0 0;
     color: $white-color;
-    font-size: 32px;
+    font-size: 24px;
     line-height: 40px;
   }  
 
   .filter-container {
     @extend %display-middle;
+    width: 300px;
     margin: 0 5px 0 20px;
 
     input {
@@ -368,6 +369,7 @@
 }
 
 textarea {
+  border: 1px solid #ccc;
   margin: 0 0 5px 0;
   resize: none;
 }

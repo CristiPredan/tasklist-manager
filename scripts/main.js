@@ -1,6 +1,7 @@
 // MAIN JS SCRIPT - CUSTOM 
 
 $(document).ready(function () {
+
   $('#list-items').html(localStorage.getItem('listItems'));
   //$('.sublist-items').html(localStorage.getItem('sublistItems'));
 

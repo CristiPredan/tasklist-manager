@@ -37,7 +37,7 @@
     line-height: 40px; }
     .app-header .app-menu .app-menu-item span {
       color: #fff;
-      font-size: 32px;
+      font-size: 24px;
       line-height: 40px; }
     .app-header .app-menu .app-menu-item:hover {
       opacity: 0.9;
@@ -54,10 +54,11 @@
 .filters-wrapper .custom-icon {
   margin: 0 5px 0 0;
   color: #fff;
-  font-size: 32px;
+  font-size: 24px;
   line-height: 40px; }
 
 .filters-wrapper .filter-container {
+  width: 300px;
   margin: 0 5px 0 20px; }
   .filters-wrapper .filter-container input {
     height: 40px !important;
@@ -271,6 +272,7 @@
   display: none; }
 
 textarea {
+  border: 1px solid #ccc;
   margin: 0 0 5px 0;
   resize: none; }
 
