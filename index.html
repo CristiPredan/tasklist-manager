@@ -8,7 +8,7 @@
       <link type="text/css" rel="stylesheet" href="css/styles.css"/>
 
       <!--Import materialize.css-->
-      <link type="text/css" rel="stylesheet" href="css/materialize/materialize.min.css"  media="screen,projection"/>
+      <link type="text/css" rel="stylesheet" href="css/materialize/materialize.min.css"/>
 
       <!--Let browser know website is optimized for mobile-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -22,21 +22,34 @@
           </div>
 
           <div class="app-menu">
-            <a class="app-menu-item">
-              <span class="fa fa-list"></span>
-            </a><!-- /.app-menu-item --> 
 
-            <a class="app-menu-item">
-              <span class="fa fa-calendar"></span>
-            </a><!-- /.app-menu-item --> 
+            <ul id="tabs-swipe-demo" class="tabs">
+              <li class="tab app-menu-item">
+                <a href="#swipe-1">
+                  <span class="fa fa-list"></span>
+                </a>
+              </li>
+              <li class="tab app-menu-item">
+                <a href="#swipe-2">
+                  <span class="fa fa-calendar"></span>
+                </a>
+              </li>
+              <li class="tab app-menu-item">
+                <a href="#swipe-3" class="active">
+                  <span class="fa fa-sticky-note"></span>
+                </a>
+              </li>
+              <li class="tab app-menu-item">
+                <a href="#swipe-4">
+                  <span class="fa fa-leanpub"></span>
+                </a>
+              </li>
 
-            <a class="app-menu-item">
-              <span class="fa fa-sticky-note"></span>
-            </a><!-- /.app-menu-item -->
+              <button onclick="startConverting()">
+                <span class="fa fa-microphone"></span>
+              </button>
 
-            <a class="app-menu-item">
-              <span class="fa fa-leanpub"></span>
-            </a><!-- /.app-menu-item -->  
+            </ul> 
           </div>  
           
           <div class="filters-wrapper right">
@@ -47,35 +60,68 @@
 
             <div class="filter-container">
               <input type="text" class="search-filter2" placeholder="Filter subitems"/>
-          </div> 
+            </div> 
           </div><!-- /.filters-wrapper -->  
         </div><!-- /.app-header -->  
+
         <div class="app-wrapper" id="app">
-
-          <div class="app-wrapper-inner">
-            <div class="input-container">
-              <form class="add-items">
-                <input type="text" id="todo-list-item" placeholder="List item">
-                <button class="add btn orange" type="submit">Add</button>
-                <button id="app-save" class="btn">Save</button>
-              </form><!-- /.add-items -->
-            </div>
-
-            <div class="list-container">
-              <ul id="list-items" class="large"></ul>
-              <div class="delete-zone" data-role="footer" data-position="fixed">
-                <span class="font-icon fa fa-trash-o"></span>
+          <div id="swipe-1" style="width: 100%; min-height: 600px;">
+            <div class="app-wrapper-inner">
+              <div class="input-container">
+                <form class="add-items">
+                  <input type="text" id="todo-list-item" placeholder="List item">
+                  <button class="add btn orange" type="submit">Add</button>
+                  <button id="app-save" class="btn">Save</button>
+                </form><!-- /.add-items -->
               </div>
-            </div><!-- /.list-content -->
-          </div><!-- /.app-wrapper-inner -->  
+
+              <div class="list-container">
+                <ul id="list-items" class="large"></ul>
+                <div class="delete-zone" data-role="footer" data-position="fixed">
+                  <span class="font-icon fa fa-trash-o"></span>
+                </div>
+              </div><!-- /.list-content -->
+            </div><!-- /.app-wrapper-inner -->
+          </div><!--/ #tab-1 -->
+
+          <div id="swipe-2" style="width: 100%; min-height: 600px;">
+            <div class="app-wrapper-inner">
+              <h3>Calendar</h3>
+            </div><!-- /.app-wrapper-inner -->
+          </div><!--/ #tab-2 -->
+
+          <div id="swipe-3" style="width: 100%; min-height: 600px;">
+            <div class="app-wrapper-inner">
+              <div class="notepad-wrapper">
+                <div class="notepad-header">
+                  <a id="notepad-save" class="btn">Save</a>
+                </div><!-- /.notepad-header -->
+                <textarea id="textbox" class="notepad"></textarea>
+              </div><!-- /.notepad-wrapper --> 
+            </div><!-- /.app-wrapper-inner -->
+          </div><!--/ #tab-3 -->
+
+          <div id="swipe-4" style="width: 100%; min-height: 600px;">
+            <div class="app-wrapper-inner">
+              <h3>Infos</h3>
+            </div><!-- /.app-wrapper-inner -->
+          </div><!--/ #tab-3 -->
+
         </div><!-- /.app-wrapper -->
+
       </div><!-- /.app-layout-wrapper -->    
+
       <!--Import jQuery before materialize.js-->
-      <!-- <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script> -->
-      <script type="text/javascript" src="scripts/materialize/materialize.min.js"></script>
       <script type="text/javascript" src="scripts/jQuery/jquery-3.1.1.min.js"></script>
       <script type="text/javascript" src="scripts/jQueryUI/jquery-ui.min.js"></script>
+      <script type="text/javascript" src="scripts/materialize/materialize.min.js"></script>
       <script type="text/javascript" src="scripts/jquery-touch.js"></script>
-      <script type="text/javascript" src="scripts/main.js"></script>
+      <script type="text/javascript" src="scripts/voice.js"></script> 
+      <script type="text/javascript" src="scripts/main.js"></script> 
+      <script>
+        $(document).ready(function(){
+          $('.tabs').tabs();
+        });
+      </script> 
     </body>
   </html>

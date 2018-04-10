@@ -7,6 +7,14 @@
   font-family: sans-serif;
 }
 
+body {
+  overflow-x: hidden;
+}
+
+.carousel .carousel-item{
+  width:100%;
+}
+
 .input-container {
   padding: 0 15px;
   margin: 0 0 15px 0;
@@ -31,21 +39,44 @@
 
     @extend %display-middle;
 
-    .app-menu-item {
+    .tabs {
+      background-color: $dark-blue-color;
 
-      @extend %display-middle;
-      margin: 0 12px;
-      line-height: 40px;
-
-      span {
-        color: $white-color;
-        font-size: 24px;
-        line-height: 40px;
+      .indicator {
+        background-color: $white-color;
       }
 
-      &:hover {
-        opacity: 0.9;
-        cursor: pointer;
+      .app-menu-item {
+
+        @extend %display-middle;
+        background-color: $dark-blue-color;
+        margin: 0 12px;
+        line-height: 40px;
+
+        a, span {
+          background-color: $dark-blue-color;
+          color: $white-color;
+          font-size: 24px;
+          line-height: 40px;
+          padding: 0 10px;
+        }
+
+        &:hover {
+          opacity: 0.9;
+          cursor: pointer;
+        }
+      }
+
+      button {
+         background-color: $dark-blue-color;
+         border: 0;
+        span {
+          background-color: $dark-blue-color;
+          color: $white-color;
+          font-size: 24px;
+          line-height: 40px;
+          padding: 0 10px;
+        }
       }
     }
   }
@@ -429,6 +460,22 @@ input[type="text"]:focus {
 
   &.color-black {
     background: $dark-grey-color;
+  }
+}
+
+.notepad-wrapper {
+  background: $grey-fade-background;
+  padding: 15px;
+
+  .notepad-header {
+    padding: 0 0 15px 0;
+  }
+
+  textarea {
+    width: 100%;
+    min-height: 600px;
+    padding: 15px 10px;
+    background-color: $white-color;
   }
 }
 

@@ -4,7 +4,7 @@
 /* Colors */
 /* Grey Pallet */
 /* Extends */
-.app-header .app-menu, .app-header .app-menu .app-menu-item, .filters-wrapper .custom-icon, .filters-wrapper .filter-container, #list-items li.not-done .check-item, #list-items li.completed .check-item, .sublist-items li.not-done .check-subitem, .sublist-items li.completed .check-subitem, .colors-container {
+.app-header .app-menu, .app-header .app-menu .tabs .app-menu-item, .filters-wrapper .custom-icon, .filters-wrapper .filter-container, #list-items li.not-done .check-item, #list-items li.completed .check-item, .sublist-items li.not-done .check-subitem, .sublist-items li.completed .check-subitem, .colors-container {
   display: inline-block;
   vertical-align: middle; }
 
@@ -14,6 +14,12 @@
 
 * {
   font-family: sans-serif; }
+
+body {
+  overflow-x: hidden; }
+
+.carousel .carousel-item {
+  width: 100%; }
 
 .input-container {
   padding: 0 15px;
@@ -32,16 +38,32 @@
   background-color: #315BA4;
   clear: both;
   text-align: center; }
-  .app-header .app-menu .app-menu-item {
-    margin: 0 12px;
-    line-height: 40px; }
-    .app-header .app-menu .app-menu-item span {
-      color: #fff;
-      font-size: 24px;
+  .app-header .app-menu .tabs {
+    background-color: #315BA4; }
+    .app-header .app-menu .tabs .indicator {
+      background-color: #fff; }
+    .app-header .app-menu .tabs .app-menu-item {
+      background-color: #315BA4;
+      margin: 0 12px;
       line-height: 40px; }
-    .app-header .app-menu .app-menu-item:hover {
-      opacity: 0.9;
-      cursor: pointer; }
+      .app-header .app-menu .tabs .app-menu-item a, .app-header .app-menu .tabs .app-menu-item span {
+        background-color: #315BA4;
+        color: #fff;
+        font-size: 24px;
+        line-height: 40px;
+        padding: 0 10px; }
+      .app-header .app-menu .tabs .app-menu-item:hover {
+        opacity: 0.9;
+        cursor: pointer; }
+    .app-header .app-menu .tabs button {
+      background-color: #315BA4;
+      border: 0; }
+      .app-header .app-menu .tabs button span {
+        background-color: #315BA4;
+        color: #fff;
+        font-size: 24px;
+        line-height: 40px;
+        padding: 0 10px; }
 
 .app-wrapper {
   padding: 75px 0 85px 0; }
@@ -315,6 +337,17 @@ input[type="text"]:focus {
     background: #5FC44F; }
   .color-button.color-black {
     background: #2A2A28; }
+
+.notepad-wrapper {
+  background: #fafafa;
+  padding: 15px; }
+  .notepad-wrapper .notepad-header {
+    padding: 0 0 15px 0; }
+  .notepad-wrapper textarea {
+    width: 100%;
+    min-height: 600px;
+    padding: 15px 10px;
+    background-color: #fff; }
 
 input::-webkit-input-placeholder {
   color: #999; }

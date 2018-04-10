@@ -297,9 +297,45 @@ $( ".delete-zone" ).droppable({
 // Local storage save
 
 document.getElementById("app-save").addEventListener("click", function ()
-{
-  localStorage.setItem('listItems', $('#list-items').html());
-  localStorage.setSubItem('sublistItems', $('.sublist-items').html());
-} , false);
+  {
+    localStorage.setItem('listItems', $('#list-items').html());
+    localStorage.setSubItem('sublistItems', $('.sublist-items').html());
+  } , false);
+
+// Textarea localstorage
+  $(document).delegate('#textbox', 'keydown', function(e) { 
+    var keyCode = e.keyCode || e.which; 
+
+    if (keyCode == 9) { 
+    e.preventDefault(); 
+    var start = $(this).get(0).selectionStart;
+    var end = $(this).get(0).selectionEnd;
+
+    // set textarea value to: text before caret + tab + text after caret
+    $(this).val($(this).val().substring(0, start)
+          + "\t"
+          + $(this).val().substring(end));
+
+    // put caret at right position again
+    $(this).get(0).selectionStart = 
+    $(this).get(0).selectionEnd = start + 1;
+    }
+  });
+  
+  if (localStorage["textbox"])
+  {
+    var user = localStorage["textbox"] ;
+    document.getElementById("textbox").value = user ;
+  }
+  else
+  {
+    document.getElementById("textbox").placeholder = "Start writing your daily notes..." ;
+  }
+
+  document.getElementById("notepad-save").addEventListener("click", function ()
+    {
+      var user = document.getElementById("textbox").value ;
+      localStorage.setItem("textbox", user) ;
+    } , false);
 
 
